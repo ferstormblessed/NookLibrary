@@ -13,6 +13,7 @@
 #include "NOOK/components/RigidBody.h"
 #include "NOOK/components/PlayerMove.h"
 #include "box2d/box2d.h"
+#include "NOOK/core/System.h"
 
 namespace NOOK {
 

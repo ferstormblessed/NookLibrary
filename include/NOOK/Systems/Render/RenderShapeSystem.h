@@ -9,6 +9,7 @@
 #include "NOOK/components/Shape.h"
 #include "NOOK/components/CircleShape.h"
 #include "NOOK/components/RectangleShape.h"
+#include "NOOK/core/System.h"
 
 namespace NOOK {
 

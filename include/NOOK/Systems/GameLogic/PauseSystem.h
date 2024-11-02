@@ -9,6 +9,7 @@
 
 #include "SFML/Window/Keyboard.hpp"
 #include "SFML/Window/Event.hpp"
+#include "NOOK/core/System.h"
 
 namespace NOOK {
 

@@ -10,6 +10,7 @@
 
 #include "box2d/id.h"
 #include "box2d/math_functions.h"
+#include "NOOK/core/System.h"
 
 namespace NOOK {
 

@@ -7,6 +7,8 @@
 #ifndef NOOK_GAMELOGICSYSTEM_H
 #define NOOK_GAMELOGICSYSTEM_H
 
+#include "NOOK/core/System.h"
+
 namespace NOOK {
 
     class GameLogicSystem : public System {

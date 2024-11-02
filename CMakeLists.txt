@@ -44,6 +44,8 @@ install(EXPORT Box2DTARGETS
 
 # Añadir la biblioteca como un objetivo
 add_library(NOOK SHARED
+        include/NOOK/core/Types.h
+        include/NOOK/core/System.h
         src/core/ResourceManager.cpp
         src/GUI/Screens.cpp
         src/Systems/Debug/DebugSystem.cpp

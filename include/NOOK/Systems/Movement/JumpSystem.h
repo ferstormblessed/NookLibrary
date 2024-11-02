@@ -11,6 +11,7 @@
 #include "NOOK/components/RigidBody.h"
 #include "NOOK/components/Jump.h"
 #include "SFML/Window/Keyboard.hpp"
+#include "NOOK/core/System.h"
 
 namespace NOOK {
 

@@ -9,6 +9,7 @@
 
 #include <unordered_map>
 #include "SFML/Graphics/RenderWindow.hpp"
+#include "NOOK/core/System.h"
 
 namespace NOOK {
 
