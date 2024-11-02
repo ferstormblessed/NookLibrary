@@ -79,7 +79,7 @@ target_include_directories(NOOK
         $<BUILD_INTERFACE:${box2d_SOURCE_DIR}>         # Incluye ImGui-SFML
 )
 
-target_link_libraries(NOOK PRIVATE sfml-graphics sfml-audio ImGui-SFML::ImGui-SFML box2d)
+target_link_libraries(NOOK PUBLIC sfml-graphics sfml-audio ImGui-SFML::ImGui-SFML box2d)
 target_compile_features(NOOK PRIVATE cxx_std_17)
 
 # Instalación (opcional)
