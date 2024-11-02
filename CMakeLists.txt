@@ -57,6 +57,7 @@ add_library(NOOK SHARED
         src/Systems/Render/RenderSpriteSystem.cpp
         src/Systems/Render/RenderTextSystem.cpp
         src/Utils/utils.cpp
+        src/Utils/Register.cpp
 )
 
 # Include SFML headers
