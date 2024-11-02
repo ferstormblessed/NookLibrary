@@ -7,6 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 
 include(FetchContent)
+
+# Fetch dependencies
 FetchContent_Declare(SFML
         GIT_REPOSITORY https://github.com/SFML/SFML.git
         GIT_TAG 2.6.x)
@@ -16,33 +18,18 @@ FetchContent_Declare(ImGui
         GIT_REPOSITORY https://github.com/ocornut/imgui
         GIT_TAG v1.90.9-docking)
 FetchContent_MakeAvailable(ImGui)
-FetchContent_GetProperties(ImGui SOURCE_DIR IMGUI_DIR)
 
-set(IMGUI_SFML_FIND_SFML OFF)
 FetchContent_Declare(ImGui-SFML
         GIT_REPOSITORY https://github.com/SFML/imgui-sfml
         GIT_TAG 2.6.x)
 FetchContent_MakeAvailable(ImGui-SFML)
 
-option(BOX2D_BUILD_UNIT_TESTS OFF)
 FetchContent_Declare(box2d
-        GIT_REPOSITORY      https://github.com/erincatto/Box2D.git
-        GIT_TAG             v3.0.0)
+        GIT_REPOSITORY https://github.com/erincatto/Box2D.git
+        GIT_TAG v3.0.0)
 FetchContent_MakeAvailable(box2d)
 
-install(TARGETS box2d
-        EXPORT Box2DTARGETS
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib
-)
-
-install(EXPORT Box2DTARGETS
-        FILE Box2DTargets.cmake
-        NAMESPACE Box2D::
-        DESTINATION lib/cmake/Box2D
-)
-
-# Añadir la biblioteca como un objetivo
+# Define the NOOK library
 add_library(NOOK SHARED
         include/NOOK/core/Types.h
         include/NOOK/core/System.h
@@ -62,36 +49,25 @@ add_library(NOOK SHARED
         src/Utils/Register.cpp
 )
 
-# Include SFML headers
-include_directories(${SFML_INCLUDE_DIR})
-# Include Imgui-SFML headers
-include_directories(${imgui-sfml_SOURCE_DIR})
-# Include Box2d headers
-include_directories(${box2d_SOURCE_DIR}/include)
-
-# Specify the include directories for the NOOK library
+# Include directories
 target_include_directories(NOOK
         PUBLIC
-        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>    # For users building the library
-        $<INSTALL_INTERFACE:include>                        # For users using the installed library
-        $<BUILD_INTERFACE:${SFML_SOURCE_DIR}/include>       # Incluye SFML para la construcción
-        $<BUILD_INTERFACE:${imgui-sfml_SOURCE_DIR}>         # Incluye ImGui-SFML
-        $<BUILD_INTERFACE:${box2d_SOURCE_DIR}>         # Incluye ImGui-SFML
+        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
+        $<BUILD_INTERFACE:${SFML_SOURCE_DIR}/include>
+        $<BUILD_INTERFACE:${imgui-sfml_SOURCE_DIR}>
+        $<BUILD_INTERFACE:${box2d_SOURCE_DIR}/include>
 )
 
+# Link dependencies
 target_link_libraries(NOOK PUBLIC sfml-graphics sfml-audio ImGui-SFML::ImGui-SFML box2d)
-target_compile_features(NOOK PRIVATE cxx_std_17)
 
-# Instalación (opcional)
+# Installation
 install(TARGETS NOOK
         EXPORT NookTargets
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib
         RUNTIME DESTINATION bin
-)
-
-install(DIRECTORY include/
-        DESTINATION include
 )
 
 install(EXPORT NookTargets
