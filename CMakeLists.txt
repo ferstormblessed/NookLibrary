@@ -65,6 +65,7 @@ add_library(NOOK SHARED
         include/NOOK/Games/Platformer.h
 )
 
+
 # Include SFML headers
 include_directories(${SFML_INCLUDE_DIR})
 # Include Imgui-SFML headers
