@@ -62,6 +62,7 @@ add_library(NOOK SHARED
         src/Utils/Register.cpp
         include/NOOK/Games/InfiniteRunner.h
         include/NOOK/Games/Pong.h
+        include/NOOK/Games/Platformer.h
 )
 
 # Include SFML headers
