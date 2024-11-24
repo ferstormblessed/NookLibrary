@@ -1,5 +1,7 @@
 # Development of Nook a comprehensive 2D game engine using modern C++
 
+## Nook Library
+
 *This software is available under 2 licenses -- choose whichever you prefer.*
 
 ## Public Domain
